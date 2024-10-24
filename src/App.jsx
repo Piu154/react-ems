@@ -1,5 +1,6 @@
 import React from "react"
-import Login from './components/Auth/Login'
+// import Login from './components/Auth/Login'
+import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard"
 
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
 
   return (
     <>
-    <Login/>
+    {/* <Login/> */}
+    <EmployeeDashboard/>
     </>
   )
 }
