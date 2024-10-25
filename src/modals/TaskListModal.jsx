@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from 'antd';
 
 const TaskListModal = ({ isOpen, task, onClose }) => {
-  // console.log("task",task);
+  console.log("task",task);
   return (
     <Modal
       title={task?.title} 
