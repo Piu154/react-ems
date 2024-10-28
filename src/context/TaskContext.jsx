@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { createContext, useState } from 'react'
 
-const TaskContext = () => {
-  return (
-    <div>
+export const TaskContext = createContext();
+
+// const AuthContext = () => {
+//   return (
+//     <div>
       
-    </div>
+//     </div>
+//   )
+// }
+
+// export default AuthContext
+export const TaskProvider =()=>{
+  
+  return(
+    <TaskContext.Provider >
+
+    </TaskContext.Provider>
   )
 }
-
-export default TaskContext
