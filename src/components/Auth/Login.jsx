@@ -5,7 +5,8 @@ import { FaEye } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
+const Login = ({handleLogin}) => {
+  // console.log(handleLogin);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [hiddenPassword, setHiddenPassword] = useState(true);
@@ -32,12 +33,30 @@ const Login = () => {
       return;
     }
 
-    console.log("email is -->", email);
-    console.log("password is --->", password);
+    // console.log("email is -->", email);
+    // console.log("password is --->", password);
 
+    handleLogin(email,password);
     setEmail('');
     setPassword('');
   };
+  // const handleLogin=(e,p)=>{
+  //   if( e == 'admin@me.com' && p=='123'){
+  //     console.log('this is admin');
+  //   }else if(e=='emp@me.com' && p == '456789@Piu'){
+  //     console.log('this is employee');
+  //   }else{
+  //     toast.error('Invalid Credentials', {
+  //       position: "top-right",  
+  //       autoClose: 3000,        
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       theme: "colored"         
+  //     });
+  //   }
+  // }
 
   return (
     <div className="flex min-h-screen min-w-full items-center justify-center">
@@ -80,7 +99,7 @@ const Login = () => {
             </div>
           </div>
 
-          <button className="border-2 border-red-600 rounded-full p-2 mt-2 cursor-pointer hover:border-red-400 focus:outline-none transition duration-300 bg-red-600">
+          <button className="border-2 border-red-600 rounded-full p-2 mt-2 cursor-pointer hover:border-red-400 focus:outline-none transition duration-300 bg-red-600" >
             Log in
           </button>
 
