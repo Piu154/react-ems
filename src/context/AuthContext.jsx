@@ -14,13 +14,14 @@ export const AuthContext = createContext();
 export const AuthProvider =({children})=>{
   const[user,setUser]=useState(null);
   const[userData,setUserData]=useState(null);
+  const[loggedInUserData,setLoggedInUserData]=useState(null);
   useEffect(()=>{
     const{employeesData,adminData,jobCardsData}=getLocalStorage();
     setUserData({employeesData,adminData,jobCardsData});
   },[])
   // setUserData(getLocalStorage()) ;
   // console.log("data---->",data);
-  const value={user,setUser,userData,setUserData};
+  const value={user,setUser,userData,setUserData,loggedInUserData,setLoggedInUserData};
   return(
     <AuthContext.Provider value={value} >
           {children}
