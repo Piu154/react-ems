@@ -9,7 +9,7 @@ const FailedTask = ({data}) => {
   }
   return (
    <>
-   <div className='rounded-xl w-[45%] p-10 bg-yellow-400 cursor-pointer'onClick={handleModalOpen}>
+   <div className="rounded-xl w-[45%] py-6 px-9 bg-yellow-400 cursor-pointer"onClick={handleModalOpen}>
     <h2 className='text-3xl font-semibold'>{taskSummary?.
 failedTasks}</h2>
     <h3 className='text-xl font-medium'>Failed</h3>

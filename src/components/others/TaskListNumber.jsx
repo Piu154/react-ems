@@ -9,7 +9,7 @@ const TaskListNumber = ({data}) => {
   console.log("taskilistNumberdata",data);
   return (
    <>
-   <div className="flex flex-wrap justify-between gap-5 mt-10">
+   <div className="flex  justify-between gap-5 mt-10">
    <NewTask data={data}/>
    <AcceptTask data={data}/>
    <CompleteTask data={data}/>

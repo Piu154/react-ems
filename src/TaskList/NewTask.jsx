@@ -11,7 +11,7 @@ const NewTask = ({data}) => {
   }
   return (
     <>
-      <div className="rounded-xl w-[45%] p-10 bg-red-400 cursor-pointer" 
+      <div className="rounded-xl w-[45%] py-6 px-9 bg-red-400 cursor-pointer" 
       onClick={handleOpenModal}
       >
         <h2 className="text-3xl font-semibold">{taskSummary?.newTasks}</h2>
