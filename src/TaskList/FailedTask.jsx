@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FailedTaskModal from '../modals/FailedTaskModal'
 
-const FailedTask = () => {
+const FailedTask = ({data}) => {
   const[isModalOpen,setIsModalOpen]=useState(false);
   const { taskSummary } = data || {};
   const handleModalOpen=()=>{
@@ -9,7 +9,7 @@ const FailedTask = () => {
   }
   return (
    <>
-   <div className='rounded-xl w-[45%] p-10 bg-green-400 cursor-pointer'onClick={handleModalOpen}>
+   <div className='rounded-xl w-[45%] p-10 bg-yellow-400 cursor-pointer'onClick={handleModalOpen}>
     <h2 className='text-3xl font-semibold'>{taskSummary?.
 failedTasks}</h2>
     <h3 className='text-xl font-medium'>Failed</h3>
@@ -17,7 +17,7 @@ failedTasks}</h2>
     <FailedTaskModal
       isOpen={isModalOpen}
       onClose={handleModalOpen}
-      taskData={{title:'Completed'}}/>
+      taskData={{title:'Failed'}}/>
       </>
   
   )

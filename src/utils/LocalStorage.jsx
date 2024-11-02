@@ -1,16 +1,5 @@
 // Function to calculate task summary for each employee
-const calculateTaskSummary = (tasks) => {
-  return tasks.reduce(
-    (summary, task) => {
-      if (task.active) summary.active += 1;
-      if (task.newTask) summary.newTask += 1;
-      if (task.completed) summary.completed += 1;
-      if (task.failed) summary.failed += 1;
-      return summary;
-    },
-    { active: 0, newTask: 0, completed: 0, failed: 0 }
-  );
-};
+
 
 // Job Cards define groups for task sharing among employees
 const jobCards = [
@@ -156,12 +145,12 @@ const employees = [
         newTask: true,
         completed: true,
         failed: false,
-        title: "Handle customer complaints",
-        description: "Address customer issues reported via email.",
+        title: "Handle customer Reviews",
+        description: "Address customer Reviews reported via email.",
         date: "2024-10-10",
         category: "Customer Service",
         taskColor: "bg-yellow-400",
-        taskPriority: "low"
+        taskPriority: "medium"
       }
       
     ],

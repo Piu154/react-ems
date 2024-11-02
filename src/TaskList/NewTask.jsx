@@ -10,7 +10,7 @@ const NewTask = ({data}) => {
     setIsModalOpan((prev)=>!prev);
   }
   return (
-    <div >
+    <>
       <div className="rounded-xl w-[45%] p-10 bg-red-400 cursor-pointer" 
       onClick={handleOpenModal}
       >
@@ -20,10 +20,10 @@ const NewTask = ({data}) => {
       
       <NewTaskListNumberModal
       isOpen={isModalOpen}
-      OnClose={handleOpenModal}
+      onClose={handleOpenModal}
       taskData={{title:'New Task'}}
       />
-    </div>
+    </>
   )
 }
 

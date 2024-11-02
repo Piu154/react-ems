@@ -1,17 +1,17 @@
 import { Modal } from 'antd'
 import React from 'react'
 
-const NewTaskListNumberModal = ({isOpen,OnClose, taskData}) => {
+const NewTaskListNumberModal = ({isOpen,onClose, taskData}) => {
    
   return (
     <Modal 
     title={<span style={{color:'black'}}>{taskData?.title}</span>}
     open={isOpen}
-    onCancel={OnClose}
+    onCancel={onClose}
     footer={null}
     maskClosable={true}
     >
-    <p>{<span style={{color:'black'}}>{taskData?.title}</span>}</p>
+    <p>{<span style={{color:'black'}}> Details for{taskData?.title}</span>}</p>
     </Modal>
   )
 }
