@@ -1,28 +1,23 @@
-import React from 'react'
+import React from 'react';
+import NewTask from '../../TaskList/NewTask';
+import AcceptTask from '../../TaskList/AcceptTask';
+import CompleteTask from '../../TaskList/CompleteTask';
+import FailedTask from '../../TaskList/FailedTask';
+
 
 const TaskListNumber = ({data}) => {
-  console.log("tasklistnuberdata",data);
+  console.log("taskilistNumberdata",data);
   return (
-    <>
-      <div className="flex mt-10 justify-between gap-5 screen">
-        <div className="rounded-xl w-[45%] p-10 bg-red-400">
-          <h2 className="text-3xl font-semibold">0</h2>
-          <h3 className="text-xl font-medium">New Task</h3>
-        </div>
-        <div className="rounded-xl w-[45%] p-10 bg-blue-400">
-          <h2 className="text-3xl font-semibold">0</h2>
-          <h3 className="text-xl font-medium">New Task</h3>
-        </div>
-        <div className="rounded-xl w-[45%] p-10 bg-yellow-400">
-          <h2 className="text-3xl font-semibold">0</h2>
-          <h3 className="text-xl font-medium">New Task</h3>
-        </div>
-        <div className="rounded-xl w-[45%] p-10 bg-green-400">
-          <h2 className="text-3xl font-semibold">0</h2>
-          <h3 className="text-xl font-medium">New Task</h3>
-        </div>
-      </div>
-    </>
+   <>
+   <div className="flex flex-wrap justify-between gap-5 mt-10">
+   <NewTask data={data}/>
+   <AcceptTask data={data}/>
+   <CompleteTask data={data}/>
+   <FailedTask data={data}/>
+   </div>
+  
+   </>
+
   );
 };
 

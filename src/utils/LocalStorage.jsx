@@ -104,7 +104,7 @@ const employees = [
     id: 2,
     name: "Jane Smith",
     email: "jane.smith@example.com",
-    password: " ",
+    password: "Password2!",
     jobCardIds: [101, 104],
     tasks: [
       {
@@ -148,12 +148,27 @@ const employees = [
         category: "Customer Service",
         taskColor: "bg-green-400",
         taskPriority: "low"
+      },
+      {
+        taskId: 7,
+        jobCardId: 104,
+        active: false,
+        newTask: true,
+        completed: true,
+        failed: false,
+        title: "Handle customer complaints",
+        description: "Address customer issues reported via email.",
+        date: "2024-10-10",
+        category: "Customer Service",
+        taskColor: "bg-yellow-400",
+        taskPriority: "low"
       }
+      
     ],
     taskSummary: {
-      totalTasks: 3,
+      totalTasks: 4,
       activeTasks: 2,
-      newTasks: 1,
+      newTasks: 2,
       completedTasks: 1,
       failedTasks: 0
     }
@@ -166,7 +181,7 @@ const employees = [
     jobCardIds: [101],
     tasks: [
       {
-        taskId: 7,
+        taskId: 8,
         jobCardId: 101,
         active: true,
         newTask: true,
@@ -180,7 +195,7 @@ const employees = [
         taskPriority: "high"
       },
       {
-        taskId: 8,
+        taskId: 9,
         jobCardId: 101,
         active: true,
         newTask: false,
@@ -194,7 +209,7 @@ const employees = [
         taskPriority: "medium"
       },
       {
-        taskId: 9,
+        taskId: 10,
         jobCardId: 101,
         active: false,
         newTask: false,
@@ -224,7 +239,7 @@ const employees = [
     jobCardIds: [102],
     tasks: [
       {
-        taskId: 10,
+        taskId: 11,
         jobCardId: 102,
         active: true,
         newTask: true,
@@ -238,7 +253,7 @@ const employees = [
         taskPriority: "high"
       },
       {
-        taskId: 11,
+        taskId: 12,
         jobCardId: 102,
         active: true,
         newTask: false,
@@ -252,7 +267,7 @@ const employees = [
         taskPriority: "medium"
       },
       {
-        taskId: 12,
+        taskId: 13,
         jobCardId: 102,
         active: false,
         newTask: false,
@@ -282,7 +297,7 @@ const employees = [
     jobCardIds: [102, 104],
     tasks: [
       {
-        taskId: 13,
+        taskId: 14,
         jobCardId: 102,
         active: true,
         newTask: true,
@@ -296,7 +311,7 @@ const employees = [
         taskPriority: "high"
       },
       {
-        taskId: 14,
+        taskId: 15,
         jobCardId: 102,
         active: false,
         newTask: false,
@@ -310,7 +325,7 @@ const employees = [
         taskPriority: "medium"
       },
       {
-        taskId: 15,
+        taskId: 16,
         jobCardId: 104,
         active: false,
         newTask: false,
