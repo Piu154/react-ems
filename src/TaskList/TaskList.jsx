@@ -60,10 +60,10 @@ const TaskList = ({ data }) => {
         filteredJobCards.map(card => (
           <div
             key={card.jobCardId}
-            className={`flex-shrink-0 h-full w-[300px] p-5 rounded-xl ${card.backgroundColor}`}
+            className={`flex-shrink-0 h-full w-[330px] px-8  py-10 rounded-xl ${card.backgroundColor}`}
           >
             <h2 className='text-2xl font-semibold'>{card.title}</h2>
-            <p className='text-sm mt-2'>{card.description}</p>
+            <p className='text-sm mt-2 min-w-[400px]'>{card.description}</p>
             <p className='mt-2 text-sm'>
               Assigned: {card.assignedEmployeeIds.map(empId => {
                 const employee = employeesData.find(emp => emp.id === empId);

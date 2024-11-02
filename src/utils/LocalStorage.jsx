@@ -106,7 +106,7 @@ const employees = [
         title: "Website redesign",
         description: "Implement the new website design.",
         date: "2024-10-05",
-        category: "Design",
+        category: "Marketing",
         taskColor: "bg-red-400",
         taskPriority: "high"
       },
