@@ -4,39 +4,31 @@ import TaskListModal from '../modals/TaskListModal';
 import { getLocalStorage } from '../utils/LocalStorage';
 
 const TaskList = ({ data }) => {
-  const selectedEmployeeId = data.id;
+  const selectedEmployeeId = data.id; 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTask, setSelectedTask] = useState({});
+  const [selectedTasks, setSelectedTasks] = useState([]);
   const [filteredJobCards, setFilteredJobCards] = useState([]);
 
+ 
   const { employeesData, jobCardsData } = getLocalStorage();
-  console.log("jobcardsdata", jobCardsData);
+  console.log("jobCardsData", jobCardsData);
   console.log("employeesData", employeesData);
 
   const colorClasses = [
-    'bg-red-400',
-    'bg-blue-400',
-    'bg-green-400',
-    'bg-yellow-400',
-    'bg-purple-400',
-    'bg-pink-400',
-    'bg-indigo-400',
-    'bg-gray-400',
+    'bg-red-400', 'bg-blue-400', 'bg-green-400', 'bg-yellow-400',
+    'bg-purple-400', 'bg-pink-400', 'bg-indigo-400', 'bg-gray-400',
   ];
 
-  const getRandomColor = () => {
-    return colorClasses[Math.floor(Math.random() * colorClasses.length)];
-  };
+  const getRandomColor = () => colorClasses[Math.floor(Math.random() * colorClasses.length)];
 
   useEffect(() => {
-    let cardsToDisplay = jobCardsData;
+    let cardsToDisplay = jobCardsData || [];
 
     if (selectedEmployeeId) {
-      cardsToDisplay = jobCardsData.filter(card =>
-        card.assignedEmployeeIds.includes(selectedEmployeeId)
+      cardsToDisplay = cardsToDisplay.filter(card =>
+        Array.isArray(card.assignedEmployeeIds) && card.assignedEmployeeIds.includes(selectedEmployeeId)
       );
     }
-
 
     const cardsWithColors = cardsToDisplay.map(card => ({
       ...card,
@@ -44,11 +36,17 @@ const TaskList = ({ data }) => {
     }));
 
     setFilteredJobCards(cardsWithColors);
-  }, [selectedEmployeeId]); 
+  }, [selectedEmployeeId]);
 
-  const handleModalOpen = (task = null) => {
-    setIsModalOpen(prev => !prev);
-    setSelectedTask(task);
+  const handleModalOpen = (card) => {
+    if (card) {
+ 
+const selectedEmployee = employeesData.find(emp => emp.id === selectedEmployeeId);
+const employeeTasks = selectedEmployee ? selectedEmployee.tasks : [];
+const tasksForCard = employeeTasks.filter(task => task.jobCardId === card.jobCardId);
+setSelectedTasks(tasksForCard);
+}
+    setIsModalOpen(true);
   };
 
   return (
@@ -60,15 +58,17 @@ const TaskList = ({ data }) => {
         filteredJobCards.map(card => (
           <div
             key={card.jobCardId}
-            className={`flex-shrink-0 h-full w-[330px] px-8  py-10 rounded-xl ${card.backgroundColor}`}
+            className={`flex-shrink-0 h-full w-[330px] px-8 py-10 rounded-xl ${card.backgroundColor}`}
           >
             <h2 className='text-2xl font-semibold'>{card.title}</h2>
             <p className='text-sm mt-2 min-w-[400px]'>{card.description}</p>
             <p className='mt-2 text-sm'>
-              Assigned: {card.assignedEmployeeIds.map(empId => {
-                const employee = employeesData.find(emp => emp.id === empId);
-                return employee ? employee.name.split(' ')[0] : 'Unknown';
-              }).join(', ')}
+              Assigned: {Array.isArray(card.assignedEmployeeIds)
+                ? card.assignedEmployeeIds.map(empId => {
+                    const employee = employeesData.find(emp => emp.id === empId);
+                    return employee ? employee.name.split(' ')[0] : 'Unknown';
+                  }).join(', ')
+                : 'None'}
             </p>
             <Button type="primary" className="mt-3" onClick={() => handleModalOpen(card)}>
               View Details
@@ -80,8 +80,9 @@ const TaskList = ({ data }) => {
       )}
       <TaskListModal
         isOpen={isModalOpen}
-        task={selectedTask}
-        onClose={() => handleModalOpen(null)}
+        task={selectedTasks}
+        employeesData={employeesData}
+        onClose={() => setIsModalOpen(false)}
       />
     </div>
   );

@@ -1,31 +1,32 @@
-// Function to calculate task summary for each employee
-
-
 // Job Cards define groups for task sharing among employees
 const jobCards = [
   {
     jobCardId: 101,
     title: "Marketing",
     description: "Tasks related to marketing efforts",
-    assignedEmployeeIds: [2, 3], // Employee IDs assigned to this job card
+    assignedEmployeeIds: [2, 3],
+    taskIds: [4, 6], // Tasks associated with this job card
   },
   {
     jobCardId: 102,
     title: "Product Development",
     description: "Tasks related to product development",
     assignedEmployeeIds: [4, 5],
+    taskIds: [7], // Tasks associated with this job card
   },
   {
     jobCardId: 103,
     title: "Reporting",
     description: "Tasks related to reporting and documentation",
     assignedEmployeeIds: [1],
+    taskIds: [1, 2], // Tasks associated with this job card
   },
   {
     jobCardId: 104,
     title: "Customer Service",
     description: "Tasks related to customer service and support",
     assignedEmployeeIds: [2, 5],
+    taskIds: [5, 8], // Tasks associated with this job card
   },
 ];
 
@@ -50,7 +51,12 @@ const employees = [
         date: "2024-10-01",
         category: "Reporting",
         taskColor: "bg-red-400",
-        taskPriority: "high"
+        taskPriority: "high",
+        assignedJobCardDetails: {
+          jobCardId: 103,
+          title: "Reporting",
+          description: "Tasks related to reporting and documentation",
+        },
       },
       {
         taskId: 2,
@@ -64,30 +70,40 @@ const employees = [
         date: "2024-09-25",
         category: "Communication",
         taskColor: "bg-green-400",
-        taskPriority: "medium"
+        taskPriority: "medium",
+        assignedJobCardDetails: {
+          jobCardId: 103,
+          title: "Reporting",
+          description: "Tasks related to reporting and documentation",
+        },
       },
       {
         taskId: 3,
         jobCardId: 103,
-        active: false,
-        newTask: false,
+        active: true,
+        newTask: true,
         completed: false,
-        failed: true,
-        title: "Inventory update",
-        description: "Update stock levels in the system.",
-        date: "2024-09-28",
-        category: "Inventory",
+        failed: false,
+        title: "Analyze competitor performance",
+        description: "Research and analyze competitor marketing strategies.",
+        date: "2024-10-05",
+        category: "Marketing",
         taskColor: "bg-yellow-400",
-        taskPriority: "low"
-      }
+        taskPriority: "low",
+        assignedJobCardDetails: {
+          jobCardId: 103,
+          title: "Reporting",
+          description: "Tasks related to reporting and documentation",
+        },
+      },
     ],
     taskSummary: {
       totalTasks: 3,
-      activeTasks: 1,
-      newTasks: 1,
+      activeTasks: 2,
+      newTasks: 2,
       completedTasks: 1,
-      failedTasks: 1
-    }
+      failedTasks: 0,
+    },
   },
   {
     id: 2,
@@ -103,69 +119,88 @@ const employees = [
         newTask: true,
         completed: false,
         failed: false,
-        title: "Website redesign",
-        description: "Implement the new website design.",
-        date: "2024-10-05",
+        title: "Social media campaign",
+        description: "Launch a new campaign across social media platforms.",
+        date: "2024-10-10",
         category: "Marketing",
-        taskColor: "bg-red-400",
-        taskPriority: "high"
+        taskColor: "bg-blue-400",
+        taskPriority: "high",
+        assignedJobCardDetails: {
+          jobCardId: 101,
+          title: "Marketing",
+          description: "Tasks related to marketing efforts",
+        },
       },
       {
         taskId: 5,
-        jobCardId: 101,
-        active: true,
-        newTask: false,
-        completed: false,
-        failed: false,
-        title: "Update social media",
-        description: "Post scheduled content on social media platforms.",
-        date: "2024-10-03",
-        category: "Marketing",
-        taskColor: "bg-blue-400",
-        taskPriority: "medium"
-      },
-      {
-        taskId: 6,
         jobCardId: 104,
         active: false,
         newTask: false,
         completed: true,
         failed: false,
-        title: "Handle customer complaints",
-        description: "Address customer issues reported via email.",
-        date: "2024-10-10",
+        title: "Customer feedback analysis",
+        description: "Review and analyze customer feedback from surveys.",
+        date: "2024-09-28",
         category: "Customer Service",
         taskColor: "bg-green-400",
-        taskPriority: "low"
+        taskPriority: "medium",
+        assignedJobCardDetails: {
+          jobCardId: 104,
+          title: "Customer Service",
+          description: "Tasks related to customer service and support",
+        },
+      },
+      {
+        taskId: 6,
+        jobCardId: 101,
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        title: "Marketing strategy review",
+        description: "Review and update the current marketing strategy.",
+        date: "2024-10-18",
+        category: "Strategy",
+        taskColor: "bg-purple-400",
+        taskPriority: "high",
+        assignedJobCardDetails: {
+          jobCardId: 101,
+          title: "Marketing",
+          description: "Tasks related to marketing efforts",
+        },
       },
       {
         taskId: 7,
         jobCardId: 104,
-        active: false,
+        active: true,
         newTask: true,
-        completed: true,
+        completed: false,
         failed: false,
-        title: "Handle customer Reviews",
-        description: "Address customer Reviews reported via email.",
-        date: "2024-10-10",
+        title: "Customer support training",
+        description: "Conduct training for new customer support agents.",
+        date: "2024-10-20",
         category: "Customer Service",
-        taskColor: "bg-yellow-400",
-        taskPriority: "medium"
-      }
-      
+        taskColor: "bg-red-400",
+        taskPriority: "medium",
+        assignedJobCardDetails: {
+          jobCardId: 104,
+          title: "Customer Service",
+          description: "Tasks related to customer service and support",
+        },
+      },
     ],
     taskSummary: {
       totalTasks: 4,
-      activeTasks: 2,
-      newTasks: 2,
+      activeTasks: 3,
+      newTasks: 3,
       completedTasks: 1,
-      failedTasks: 0
-    }
+      failedTasks: 0,
+    },
   },
   {
     id: 3,
-    name: "Michael Johnson",
-    email: "michael.johnson@example.com",
+    name: "Mike Johnson",
+    email: "mike.johnson@example.com",
     password: "Password3!",
     jobCardIds: [101],
     tasks: [
@@ -176,49 +211,26 @@ const employees = [
         newTask: true,
         completed: false,
         failed: false,
-        title: "Social media strategy",
-        description: "Plan content strategy for social media.",
-        date: "2024-10-07",
+        title: "Email marketing setup",
+        description: "Set up email marketing tools for the campaign.",
+        date: "2024-10-12",
         category: "Marketing",
-        taskColor: "blue",
-        taskPriority: "high"
+        taskColor: "bg-purple-400",
+        taskPriority: "high",
+        assignedJobCardDetails: {
+          jobCardId: 101,
+          title: "Marketing",
+          description: "Tasks related to marketing efforts",
+        },
       },
-      {
-        taskId: 9,
-        jobCardId: 101,
-        active: true,
-        newTask: false,
-        completed: false,
-        failed: false,
-        title: "Campaign analysis",
-        description: "Analyze recent campaign performance.",
-        date: "2024-10-03",
-        category: "Analytics",
-        taskColor: "yellow",
-        taskPriority: "medium"
-      },
-      {
-        taskId: 10,
-        jobCardId: 101,
-        active: false,
-        newTask: false,
-        completed: true,
-        failed: false,
-        title: "Press release preparation",
-        description: "Draft and distribute press releases.",
-        date: "2024-09-29",
-        category: "PR",
-        taskColor: "green",
-        taskPriority: "low"
-      }
     ],
     taskSummary: {
-      totalTasks: 3,
-      activeTasks: 2,
+      totalTasks: 1,
+      activeTasks: 1,
       newTasks: 1,
-      completedTasks: 1,
-      failedTasks: 0
-    }
+      completedTasks: 0,
+      failedTasks: 0,
+    },
   },
   {
     id: 4,
@@ -228,115 +240,72 @@ const employees = [
     jobCardIds: [102],
     tasks: [
       {
-        taskId: 11,
+        taskId: 9,
         jobCardId: 102,
         active: true,
         newTask: true,
         completed: false,
         failed: false,
-        title: "Market research",
-        description: "Analyze the latest market trends.",
-        date: "2024-10-02",
-        category: "Research",
-        taskColor: "blue",
-        taskPriority: "high"
+        title: "Develop new product prototype",
+        description: "Create a prototype for the new product.",
+        date: "2024-10-15",
+        category: "Development",
+        taskColor: "bg-red-400",
+        taskPriority: "high",
+        assignedJobCardDetails: {
+          jobCardId: 102,
+          title: "Product Development",
+          description: "Tasks related to product development",
+        },
       },
-      {
-        taskId: 12,
-        jobCardId: 102,
-        active: true,
-        newTask: false,
-        completed: false,
-        failed: false,
-        title: "Product testing",
-        description: "Test the latest product version.",
-        date: "2024-09-30",
-        category: "Product Development",
-        taskColor: "purple",
-        taskPriority: "medium"
-      },
-      {
-        taskId: 13,
-        jobCardId: 102,
-        active: false,
-        newTask: false,
-        completed: true,
-        failed: false,
-        title: "Budget planning",
-        description: "Create a budget for the upcoming quarter.",
-        date: "2024-09-23",
-        category: "Finance",
-        taskColor: "green",
-        taskPriority: "low"
-      }
     ],
     taskSummary: {
-      totalTasks: 3,
-      activeTasks: 2,
+      totalTasks: 1,
+      activeTasks: 1,
       newTasks: 1,
-      completedTasks: 1,
-      failedTasks: 0
-    }
+      completedTasks: 0,
+      failedTasks: 0,
+    },
   },
   {
     id: 5,
-    name: "William Brown",
-    email: "william.brown@example.com",
+    name: "David Lee",
+    email: "david.lee@example.com",
     password: "Password5!",
-    jobCardIds: [102, 104],
+    jobCardIds: [104],
     tasks: [
       {
-        taskId: 14,
-        jobCardId: 102,
+        taskId: 10,
+        jobCardId: 104,
         active: true,
         newTask: true,
         completed: false,
         failed: false,
-        title: "Content creation",
-        description: "Write blog posts for the company website.",
-        date: "2024-10-06",
-        category: "Content",
-        taskColor: "blue",
-        taskPriority: "high"
-      },
-      {
-        taskId: 15,
-        jobCardId: 102,
-        active: false,
-        newTask: false,
-        completed: false,
-        failed: true,
-        title: "Employee survey",
-        description: "Analyze responses from the employee engagement survey.",
-        date: "2024-09-27",
-        category: "HR",
-        taskColor: "red",
-        taskPriority: "medium"
-      },
-      {
-        taskId: 16,
-        jobCardId: 104,
-        active: false,
-        newTask: false,
-        completed: true,
-        failed: false,
-        title: "Customer feedback analysis",
-        description: "Review customer feedback for improvements.",
-        date: "2024-10-01",
+        title: "Handle customer inquiries",
+        description: "Respond to customer inquiries and provide support.",
+        date: "2024-10-17",
         category: "Customer Service",
-        taskColor: "green",
-        taskPriority: "low"
-      }
+        taskColor: "bg-blue-400",
+        taskPriority: "medium",
+        assignedJobCardDetails: {
+          jobCardId: 104,
+          title: "Customer Service",
+          description: "Tasks related to customer service and support",
+        },
+      },
     ],
     taskSummary: {
-      totalTasks: 3,
+      totalTasks: 1,
       activeTasks: 1,
       newTasks: 1,
-      completedTasks: 1,
-      failedTasks: 1
-    }
-  }
+      completedTasks: 0,
+      failedTasks: 0,
+    },
+  },
 ];
+
+
+
 
 
 // Admins with rights to create and assign job cards
@@ -376,5 +345,3 @@ export const getLocalStorage = () => {
   return { employeesData, jobCardsData, adminData };
 };
 
-// Initial setup to populate local storage (optional)
-setLocalStorage();
