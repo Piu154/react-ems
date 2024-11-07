@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { MdEmail } from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importing eye slash icon for hiding password
+// import { MdEmail } from "react-icons/md";
+// import { RiLockPasswordLine } from "react-icons/ri";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; 
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = ({ handleSignUp }) => {
@@ -18,7 +20,8 @@ const SignUp = ({ handleSignUp }) => {
     };
 
     const submitHandler = (e) => {
-        e.preventDefault();
+        console.log("e---->",e);
+;        e.preventDefault();
 
         if (!passwordRegex.test(password)) {
             toast.error('Password must be at least 8 characters long, contain one uppercase, one lowercase letter, one digit, and one special character.', {
@@ -44,7 +47,7 @@ const SignUp = ({ handleSignUp }) => {
         existingUsers.push(newUser);
         localStorage.setItem('Users', JSON.stringify(existingUsers));
 
-        handleSignUp(email, password);
+        handleSignUp(email, password,uniqueUserId);
         toast.success('User registered successfully!', {
             position: "top-right",
             autoClose: 3000,
@@ -119,6 +122,12 @@ const SignUp = ({ handleSignUp }) => {
                     <button className="border-2 border-red-600 rounded-full p-2 mt-2 cursor-pointer hover:border-red-400 focus:outline-none transition duration-300 bg-red-600 text-white">
                         Sign Up
                     </button>
+                    <p className='mt-4 text-center text-white'>
+                        Already have an account?{" "}
+                        <Link to="/Login" className='text-blue-500 cursor-pointer hover:underline'>
+                            Logeed in 
+                        </Link>
+                    </p>
                 </form>
 
                 <ToastContainer />
