@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 // import { MdEmail } from "react-icons/md";
 // import { RiLockPasswordLine } from "react-icons/ri";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; 
-import { Link } from 'react-router-dom';
+import { Link,useNavigate  } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-const SignUp = ({ handleSignUp }) => {
-    const [name, setName] = useState('');
+const SignUp = () => {
+    const [name, setName] = useState(''); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [hiddenPassword, setHiddenPassword] = useState(true);
-
+  const navigate=useNavigate();
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
 
     const showPassword = () => {
@@ -47,7 +47,7 @@ const SignUp = ({ handleSignUp }) => {
         existingUsers.push(newUser);
         localStorage.setItem('Users', JSON.stringify(existingUsers));
 
-        handleSignUp(email, password,uniqueUserId);
+      
         toast.success('User registered successfully!', {
             position: "top-right",
             autoClose: 3000,
@@ -60,8 +60,9 @@ const SignUp = ({ handleSignUp }) => {
         setName('');
         setEmail('');
         setPassword('');
+        navigate("/login");
     };
-
+ 
     return (
         <div className="flex min-h-screen min-w-full items-center justify-center bg-black">
             <div className="border-2 border-red-600 p-6 rounded-lg bg-black">
@@ -94,6 +95,7 @@ const SignUp = ({ handleSignUp }) => {
                                 required
                                 className="border-2 border-red-700 rounded-full p-2 pl-10 w-full min-w-[250px] max-w-[400px] cursor-pointer hover:border-red-500 focus:outline-none transition duration-300 placeholder:text-white bg-black text-white"
                                 onChange={(e) => setEmail(e.target.value)}
+                                autoComplete='off'
                             />
                         </div>
                     </div>
@@ -115,11 +117,13 @@ const SignUp = ({ handleSignUp }) => {
                                 required
                                 className="border-2 border-red-700 rounded-full p-2 pl-10 w-full min-w-[250px] max-w-[400px] cursor-pointer hover:border-red-500 focus:outline-none transition duration-300 placeholder:text-white bg-black"
                                 onChange={(e) => setPassword(e.target.value)}
+                                autoCapitalize='off'
                             />
                         </div>
                     </div>
 
-                    <button className="border-2 border-red-600 rounded-full p-2 mt-2 cursor-pointer hover:border-red-400 focus:outline-none transition duration-300 bg-red-600 text-white">
+                    <button className="border-2 border-red-600 rounded-full p-2 mt-2 cursor-pointer hover:border-red-400 focus:outline-none transition duration-300 bg-red-600 text-white" 
+                    >
                         Sign Up
                     </button>
                     <p className='mt-4 text-center text-white'>
