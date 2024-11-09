@@ -31,7 +31,8 @@ const SignUp = () => {
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
-                theme: "colored"
+                theme: "colored",
+                style: { color: 'black', backgroundColor: 'white' }
             });
             return;
         }
@@ -56,6 +57,7 @@ const SignUp = () => {
             pauseOnHover: true,
             draggable: true,
             theme: "colored",
+            style: { color: 'black', backgroundColor: 'white' }
         });
         setName('');
         setEmail('');

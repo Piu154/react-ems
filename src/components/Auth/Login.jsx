@@ -25,7 +25,10 @@ const Login = () => {
     handleLogin(email,password);
     setEmail('');
     setPassword('');
-    navigate('/EmployeeDashboard');
+    setTimeout(()=>{
+      navigate('/EmployeeDashboard');
+    },2000);
+   
   };
   const handleLogin = (email, password) => {
     
@@ -64,6 +67,8 @@ const Login = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      theme: "colored",
+      style: { color: 'black', backgroundColor: 'white' }
       
     });
   
@@ -75,10 +80,10 @@ const Login = () => {
   return (
     <div className="flex min-h-screen min-w-full items-center justify-center bg-black">
       <div className="border-2 border-red-600 p-6 rounded-lg bg-black">
-        <h2 className="text-center mb-4 font-bold text-xl">Log in</h2>
+        <h2 className="text-center mb-4 font-bold text-xl text-white">Log in</h2>
         <form className="flex flex-col gap-3" onSubmit={submitHandler}>
           <div className="flex flex-col">
-            <label htmlFor="email" className="mb-1">Email:</label>
+            <label htmlFor="email" className="mb-1 text-white">Email:</label>
             <div className="relative">
               {/* <MdEmail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" /> */}
               <input
@@ -95,7 +100,7 @@ const Login = () => {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="password" className="mb-1">Password:</label>
+            <label htmlFor="password" className="mb-1 text-white">Password:</label>
             <div className="relative">
               {/* <RiLockPasswordLine className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" /> */
               }
@@ -127,7 +132,7 @@ const Login = () => {
           <div className='flex items-center justify-between gap-8 mt-2'>
           <div className="flex items-center gap-2">
   <input type="checkbox" id="remember" className="cursor-pointer m-0 p-0 align-middle" />
-  <p className="text-sm m-0 p-0">Remember Me</p>
+  <p className="text-sm m-0 p-0 text-white">Remember Me</p>
 </div>
 
   <a href="#" className='text-blue-500 underline cursor-pointer text-sm'>
